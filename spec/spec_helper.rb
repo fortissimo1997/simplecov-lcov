@@ -1,8 +1,6 @@
 require 'simplecov'
 require 'coveralls'
 
-Coveralls.wear!
-
 module SimpleCov::Configuration
   def clean_filters
     @filters = []
@@ -12,6 +10,11 @@ end
 SimpleCov.configure do
   clean_filters
 end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
 
 ENV['COVERAGE'] && SimpleCov.start do
   add_filter '/.rvm/'
