@@ -11,4 +11,5 @@ group :development do
   gem "bundler"
   gem "jeweler", "~> 2.0.1"
   gem "simplecov"
+  gem 'coveralls', require: false
 end
