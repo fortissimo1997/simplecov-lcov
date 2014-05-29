@@ -34,12 +34,8 @@ module SimpleCov
         end
       end
 
-      def base_directory
-        File.expand_path(File.join(File.dirname(__FILE__), '..'))
-      end
-
       def output_filename(filename)
-        filename.gsub("#{base_directory}/", '').gsub('/', '-')
+        filename.gsub("#{SimpleCov.root}/", '').gsub('/', '-')
           .tap { |name| name << '.lcov' }
       end
 
