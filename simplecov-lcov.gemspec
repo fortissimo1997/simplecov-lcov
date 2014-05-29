@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "simplecov-lcov"
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["fortissimo1997"]
@@ -14,15 +14,16 @@ Gem::Specification.new do |s|
   s.email = "fortissimo1997@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.markdown"
   ]
   s.files = [
     ".document",
     ".rspec",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.markdown",
     "Rakefile",
     "VERSION",
     "lib/simplecov-lcov.rb",
