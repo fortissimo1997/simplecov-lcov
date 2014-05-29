@@ -2,6 +2,8 @@
 
 Custom SimpleCov formatter to generate a lcov style coverage.
 
+[![Build Status](https://travis-ci.org/fortissimo1997/simplecov-lcov.svg?branch=master)](https://travis-ci.org/fortissimo1997/simplecov-lcov)
+
 ## Usage
 
 ```Ruby
