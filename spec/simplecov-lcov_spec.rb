@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'active_support/core_ext/kernel/reporting'
 
 describe SimpleCov::Formatter::LcovFormatter do
   describe '#format' do
@@ -20,7 +21,9 @@ describe SimpleCov::Formatter::LcovFormatter do
     }
 
     before {
-      SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
+      @output = capture(:stdout) do
+        SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
+      end
     }
 
     describe File do
@@ -37,6 +40,10 @@ describe SimpleCov::Formatter::LcovFormatter do
           .gsub('/path/to/repository/spec', File.dirname(__FILE__))
       }
       it { expect(File.read(output_path)).to eq(fixture) }
+    end
+
+    describe STDOUT do
+      it { expect(@output).to include('Lcov style coverage report') }
     end
   end
 

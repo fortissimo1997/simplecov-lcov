@@ -12,6 +12,8 @@ module SimpleCov
       def format(result)
         create_output_directory!
         result.files.each { |file| write_lcov!(file) }
+
+        puts "Lcov style coverage report generated for #{result.command_name} to #{SimpleCov::Formatter::LcovFormatter.output_directory}."
       end
 
       # Output directory for generated files.
