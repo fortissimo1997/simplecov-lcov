@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simplecov-lcov"
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["fortissimo1997"]
-  s.date = "2014-05-29"
+  s.date = "2014-05-30"
   s.description = "Custom SimpleCov formatter to generate a lcov style coverage."
   s.email = "fortissimo1997@gmail.com"
   s.extra_rdoc_files = [
@@ -52,6 +52,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.1"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<coveralls>, [">= 0"])
+      s.add_development_dependency(%q<activesupport>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
@@ -59,6 +60,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<coveralls>, [">= 0"])
+      s.add_dependency(%q<activesupport>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 0"])
@@ -67,6 +69,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<coveralls>, [">= 0"])
+    s.add_dependency(%q<activesupport>, [">= 0"])
   end
 end
 
