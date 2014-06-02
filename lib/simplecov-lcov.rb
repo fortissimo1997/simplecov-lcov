@@ -11,16 +11,36 @@ module SimpleCov
       # _result_ :: [SimpleCov::Result] abcoverage result instance.
       def format(result)
         create_output_directory!
-        result.files.each { |file| write_lcov!(file) }
+        if self.class.report_with_single_file?
+          write_lcov_to_single_file!(result.files)
+        else
+          result.files.each { |file| write_lcov!(file) }
+        end
 
         puts "Lcov style coverage report generated for #{result.command_name} to #{SimpleCov::Formatter::LcovFormatter.output_directory}."
       end
 
-      # Output directory for generated files.
-      # ==== Return
-      # Path for output directory.
-      def self.output_directory
-        File.join(SimpleCov.coverage_path, 'lcov')
+      class << self
+        attr_writer :report_with_single_file
+
+        def report_with_single_file?
+          !!@report_with_single_file
+        end
+
+        # Output directory for generated files.
+        # ==== Return
+        # Path for output directory.
+        def output_directory
+          File.join(SimpleCov.coverage_path, 'lcov')
+        end
+
+        # Output path for single file report.
+        # ==== Return
+        # Path for output path of single file report.
+        def single_report_path
+          basename = Pathname.new(SimpleCov.root).basename.to_s
+          File.join(output_directory, "#{basename}.lcov")
+        end
       end
 
       private
@@ -33,6 +53,12 @@ module SimpleCov
       def write_lcov!(file)
         File.open(File.join(self.class.output_directory, output_filename(file.filename)), 'w') do |f|
           f.write format_file(file)
+        end
+      end
+
+      def write_lcov_to_single_file!(files)
+        File.open(self.class.single_report_path, 'w') do |f|
+          files.each { |file| f.write format_file(file) }
         end
       end
 

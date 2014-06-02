@@ -1,5 +1,6 @@
 require 'simplecov'
 require 'coveralls'
+require 'pathname'
 
 module SimpleCov::Configuration
   def clean_filters
