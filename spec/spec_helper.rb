@@ -1,5 +1,4 @@
 require 'simplecov'
-require 'simplecov-lcov'
 require 'coveralls'
 require 'pathname'
 require 'fileutils'
@@ -16,7 +15,6 @@ end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::LcovFormatter,
   Coveralls::SimpleCov::Formatter
 ]
 
