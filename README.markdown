@@ -8,9 +8,21 @@ Custom SimpleCov formatter to generate a lcov style coverage.
 
 ## Usage
 
+#### Output report per file.
+
 ```Ruby
   require 'simplecov'
   require 'simplecov-lcov'
+  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+  SimpleCov.start
+```
+
+#### Output report as single file.
+
+```Ruby
+  require 'simplecov'
+  require 'simplecov-lcov'
+  SimpleCov::Formatter::LcovFormatter.report_with_single_file = true
   SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
   SimpleCov.start
 ```
