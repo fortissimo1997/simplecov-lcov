@@ -4,6 +4,7 @@ Custom SimpleCov formatter to generate a lcov style coverage.
 
 [![Build Status](https://travis-ci.org/fortissimo1997/simplecov-lcov.svg?branch=master)](https://travis-ci.org/fortissimo1997/simplecov-lcov)
 [![Coverage Status](https://img.shields.io/coveralls/fortissimo1997/simplecov-lcov.svg)](https://coveralls.io/r/fortissimo1997/simplecov-lcov)
+[![Gem Version](https://badge.fury.io/rb/simplecov-lcov.svg)](http://badge.fury.io/rb/simplecov-lcov)
 
 ## Usage
 
