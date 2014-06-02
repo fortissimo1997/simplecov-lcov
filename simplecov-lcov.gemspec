@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simplecov-lcov"
-  s.version = "0.1.4"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["fortissimo1997"]
-  s.date = "2014-05-30"
+  s.date = "2014-06-02"
   s.description = "Custom SimpleCov formatter to generate a lcov style coverage."
   s.email = "fortissimo1997@gmail.com"
   s.extra_rdoc_files = [
