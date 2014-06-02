@@ -2,6 +2,7 @@ require 'simplecov'
 require 'simplecov-lcov'
 require 'coveralls'
 require 'pathname'
+require 'fileutils'
 
 module SimpleCov::Configuration
   def clean_filters
@@ -34,5 +35,13 @@ require 'simplecov-lcov'
 # Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-
+  config.before(:each) do
+    if Dir.exist?(SimpleCov::Formatter::LcovFormatter.output_directory)
+      FileUtils
+        .remove_dir(
+                    SimpleCov::Formatter::LcovFormatter.output_directory,
+                    true
+                   )
+    end
+  end
 end
