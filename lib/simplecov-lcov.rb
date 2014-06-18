@@ -68,13 +68,17 @@ module SimpleCov
       end
 
       def format_file(file)
-        "SF:#{file.filename}\n".tap do |content|
-          file.lines.reject(&:never?).reject(&:skipped?)
-            .each do |line|
-            content << "DA:#{line.number},#{line.coverage}\n"
-          end
-          content << "end_of_record\n"
-        end
+        "SF:#{file.filename}\n#{format_lines(file)}\nend_of_record\n"
+      end
+
+      def format_lines(file)
+        file.lines.reject(&:never?).reject(&:skipped?)
+          .map { |line| format_line(line) }
+          .join("\n")
+      end
+
+      def format_line(line)
+        "DA:#{line.number},#{line.coverage}"
       end
     end
   end
