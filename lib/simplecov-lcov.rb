@@ -72,9 +72,13 @@ module SimpleCov
       end
 
       def format_lines(file)
-        file.lines.reject(&:never?).reject(&:skipped?)
+        filtered_lines(file)
           .map { |line| format_line(line) }
           .join("\n")
+      end
+
+      def filtered_lines(file)
+        file.lines.reject(&:never?).reject(&:skipped?)
       end
 
       def format_line(line)
