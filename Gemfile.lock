@@ -44,7 +44,7 @@ GEM
       rdoc
     json (1.8.1)
     jwt (1.0.0)
-    mime-types (2.3)
+    mime-types (2.4.1)
     mini_portile (0.6.0)
     minitest (5.4.2)
     multi_json (1.10.1)
