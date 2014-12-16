@@ -50,3 +50,5 @@ pkg
 
 # For rbenv
 .ruby-version
+
+Gemfile.lock
