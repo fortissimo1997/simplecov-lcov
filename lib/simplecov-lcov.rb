@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'pathname'
 
 fail 'simplecov-lcov requires simplecov' unless defined?(SimpleCov)
 

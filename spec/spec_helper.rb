@@ -1,6 +1,5 @@
 require 'simplecov'
 require 'coveralls'
-require 'pathname'
 require 'fileutils'
 
 module SimpleCov::Configuration
