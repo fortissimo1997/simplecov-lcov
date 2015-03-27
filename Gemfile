@@ -12,5 +12,5 @@ group :development do
   gem 'jeweler', '~> 2.0.1'
   gem 'simplecov'
   gem 'coveralls', require: false
-  gem 'activesupport'
+  gem 'activesupport', '~> 4.1.10'
 end
