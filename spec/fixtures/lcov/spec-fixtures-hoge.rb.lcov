@@ -1,4 +1,4 @@
-SF:/path/to/repository/spec/fixtures/hoge.rb
+SF:./spec/fixtures/hoge.rb
 DA:4,1
 DA:5,2
 DA:6,2

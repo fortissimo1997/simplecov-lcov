@@ -1,4 +1,4 @@
-SF:/path/to/repository/spec/fixtures/app/models/user.rb
+SF:./spec/fixtures/app/models/user.rb
 DA:4,2
 DA:5,2
 DA:6,2
