@@ -38,7 +38,6 @@ describe SimpleCov::Formatter::LcovFormatter do
         }
         let(:fixture) {
           File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-hoge.rb.lcov")
-            .gsub('/path/to/repository/spec', File.dirname(__FILE__))
         }
         it { expect(File.read(output_path)).to eq(fixture) }
       end
@@ -49,7 +48,6 @@ describe SimpleCov::Formatter::LcovFormatter do
         }
         let(:fixture) {
           File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.lcov")
-            .gsub('/path/to/repository/spec', File.dirname(__FILE__))
         }
         it { expect(File.read(output_path)).to eq(fixture) }
       end
@@ -77,11 +75,9 @@ describe SimpleCov::Formatter::LcovFormatter do
         }
         let(:fixture_of_hoge) {
           File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-hoge.rb.lcov")
-            .gsub('/path/to/repository/spec', File.dirname(__FILE__))
         }
         let(:fixture_of_user) {
           File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.lcov")
-            .gsub('/path/to/repository/spec', File.dirname(__FILE__))
         }
         it { expect(File.read(output_path)).to match(fixture_of_hoge) }
         it { expect(File.read(output_path)).to match(fixture_of_user) }
