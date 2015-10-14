@@ -107,7 +107,7 @@ describe SimpleCov::Formatter::LcovFormatter do
       end
 
       after {
-        SimpleCov::Formatter::LcovFormatter.remove_instance_variable :@single_file_report_path
+        SimpleCov::Formatter::LcovFormatter.__send__ :remove_instance_variable, :@single_file_report_path
       }
     end
   end
