@@ -18,11 +18,17 @@ module SimpleCov
           result.files.each { |file| write_lcov!(file) }
         end
 
-        puts "Lcov style coverage report generated for #{result.command_name} to #{SimpleCov::Formatter::LcovFormatter.output_directory}."
+        path = if self.class.report_with_single_file?
+          self.class.single_report_path
+        else
+          self.class.output_directory
+        end
+        puts "Lcov style coverage report generated for #{result.command_name} to #{path}."
       end
 
       class << self
         attr_writer :report_with_single_file
+        attr_writer :single_file_report_path
 
         def report_with_single_file?
           !!@report_with_single_file
@@ -32,6 +38,8 @@ module SimpleCov
         # ==== Return
         # Path for output directory.
         def output_directory
+          return File.dirname(@single_file_report_path) if @single_file_report_path
+
           File.join(SimpleCov.coverage_path, 'lcov')
         end
 
@@ -39,6 +47,8 @@ module SimpleCov
         # ==== Return
         # Path for output path of single file report.
         def single_report_path
+          return @single_file_report_path if @single_file_report_path
+
           basename = Pathname.new(SimpleCov.root).basename.to_s
           File.join(output_directory, "#{basename}.lcov")
         end
