@@ -87,6 +87,30 @@ describe SimpleCov::Formatter::LcovFormatter do
         it { expect(@output).to include('Lcov style coverage report') }
       end
     end
+
+    describe '.use_absolute_path' do
+      before {
+        SimpleCov::Formatter::LcovFormatter.use_absolute_path = true
+        SimpleCov::Formatter::LcovFormatter.report_with_single_file = true
+        @output = capture(:stdout) do
+          SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
+        end
+      }
+
+      let(:output_path) {
+        SimpleCov::Formatter::LcovFormatter.single_report_path
+      }
+
+      let(:fixture_of_hoge_absolute) {
+        File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-hoge-absolute-path.rb.lcov")
+      }
+
+      it { expect(File.read(output_path)).to match(fixture_of_hoge_absolute) }
+
+      describe STDOUT do
+        it { expect(@output).to include('Lcov style coverage report') }
+      end
+    end
   end
 
   describe '.output_directory' do
