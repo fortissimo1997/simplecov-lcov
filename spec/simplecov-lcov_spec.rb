@@ -91,6 +91,6 @@ describe SimpleCov::Formatter::LcovFormatter do
 
   describe '.output_directory' do
     subject { SimpleCov::Formatter::LcovFormatter.output_directory }
-    it { expect(subject).to eq(File.join(SimpleCov.coverage_path, 'lcov')) }
+    it { expect(subject).to eq(SimpleCov.coverage_path) }
   end
 end
