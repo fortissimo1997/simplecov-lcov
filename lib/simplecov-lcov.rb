@@ -32,15 +32,23 @@ module SimpleCov
         # ==== Return
         # Path for output directory.
         def output_directory
-          File.join(SimpleCov.coverage_path, 'lcov')
+          if report_with_single_file?
+            SimpleCov.coverage_path
+          else
+            File.join(SimpleCov.coverage_path, 'lcov')
+          end
         end
 
         # Output path for single file report.
         # ==== Return
         # Path for output path of single file report.
         def single_report_path
-          basename = Pathname.new(SimpleCov.root).basename.to_s
-          File.join(output_directory, "#{basename}.lcov")
+          # generate coverage/lcov.info compatible with atom plugin
+          File.join(output_directory, "lcov.info")
+
+          # # generate coverage/lcov/basename.lcov
+          # basename = Pathname.new(SimpleCov.root).basename.to_s
+          # File.join(output_directory, "#{basename}.lcov")
         end
       end
 

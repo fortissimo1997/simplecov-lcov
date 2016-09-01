@@ -9,8 +9,10 @@ group :development do
   gem 'rspec'
   gem 'rdoc'
   gem 'bundler'
-  gem 'jeweler', '~> 2.0.1'
+  gem 'jeweler', '~> 2.1.1'
   gem 'simplecov'
   gem 'coveralls', require: false
   gem 'activesupport', '~> 4.1.10'
+  gem 'spring'
+  gem 'guard-rspec', require: false
 end
