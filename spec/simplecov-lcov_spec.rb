@@ -22,9 +22,7 @@ describe SimpleCov::Formatter::LcovFormatter do
 
     context 'generating report per file' do
       before {
-        @output = capture(:stdout) do
-          SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
-        end
+        SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
       }
 
       describe File do
@@ -51,18 +49,12 @@ describe SimpleCov::Formatter::LcovFormatter do
         }
         it { expect(File.read(output_path)).to eq(fixture) }
       end
-
-      describe STDOUT do
-        it { expect(@output).to include('Lcov style coverage report') }
-      end
     end
 
     context 'generating single file report' do
       before {
         SimpleCov::Formatter::LcovFormatter.report_with_single_file = true
-        @output = capture(:stdout) do
-          SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
-        end
+        SimpleCov::Formatter::LcovFormatter.new.format(simplecov_result)
       }
 
       describe File do
@@ -81,10 +73,6 @@ describe SimpleCov::Formatter::LcovFormatter do
         }
         it { expect(File.read(output_path)).to match(fixture_of_hoge) }
         it { expect(File.read(output_path)).to match(fixture_of_user) }
-      end
-
-      describe STDOUT do
-        it { expect(@output).to include('Lcov style coverage report') }
       end
     end
   end
