@@ -1,0 +1,24 @@
+module SimpleCovLcov
+  class Configuration
+    attr_writer :report_with_single_file
+    attr_writer :output_directory
+    attr_writer :lcov_file_name
+    attr_writer :single_report_path
+
+    def report_with_single_file?
+      !!@report_with_single_file
+    end
+
+    def output_directory
+      @output_directory || File.join(SimpleCov.coverage_path, 'lcov')
+    end
+
+    def single_report_path
+      @single_report_path || File.join(output_directory, lcov_file_name)
+    end
+
+    def lcov_file_name
+      @lcov_file_name || "#{Pathname.new(SimpleCov.root).basename}.lcov"
+    end
+  end
+end
