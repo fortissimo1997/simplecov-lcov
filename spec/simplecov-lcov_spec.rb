@@ -75,6 +75,29 @@ describe SimpleCov::Formatter::LcovFormatter do
         it { expect(File.read(output_path)).to match(fixture_of_user) }
       end
     end
+
+    context 'generating single file report with custom path' do
+      before {
+        @path = 'a/b/c/lcov.d'
+        SimpleCov::Formatter::LcovFormatter.report_with_single_file = true
+        SimpleCov::Formatter::LcovFormatter.single_file_report_path = @path
+      }
+
+      describe 'single_report_path' do
+        it { expect(SimpleCov::Formatter::LcovFormatter.single_report_path).to eq(@path) }
+      end
+
+      describe 'output_directory' do
+        let(:directory) {
+          File.dirname(@path)
+        }
+        it { expect(SimpleCov::Formatter::LcovFormatter.output_directory).to eq(directory) }
+      end
+
+      after {
+        SimpleCov::Formatter::LcovFormatter.__send__ :remove_instance_variable, :@single_file_report_path
+      }
+    end
   end
 
   describe '.output_directory' do
