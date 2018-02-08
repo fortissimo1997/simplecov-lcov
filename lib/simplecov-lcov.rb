@@ -22,10 +22,14 @@ module SimpleCov
       end
 
       class << self
-        attr_writer :report_with_single_file
+        attr_writer :report_with_single_file, :use_absolute_path
 
         def report_with_single_file?
           !!@report_with_single_file
+        end
+
+        def use_absolute_path?
+          !!@use_absolute_path
         end
 
         # Output directory for generated files.
@@ -68,8 +72,12 @@ module SimpleCov
           .tap { |name| name << '.lcov' }
       end
 
+      def path_mode
+        self.class.use_absolute_path? ? '/' : './'
+      end
+
       def format_file(file)
-        filename = file.filename.gsub("#{SimpleCov.root}/", './')
+        filename = file.filename.gsub("#{SimpleCov.root}/", path_mode)
         "SF:#{filename}\n#{format_lines(file)}\nend_of_record\n"
       end
 
