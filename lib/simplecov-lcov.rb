@@ -20,7 +20,7 @@ module SimpleCov
           result.files.each { |file| write_lcov!(file) }
         end
 
-        puts "Lcov style coverage report generated for #{result.command_name} to #{lcov_results_path}."
+        puts "Lcov style coverage report generated for #{result.command_name} to #{lcov_results_path}"
       end
 
       class << self

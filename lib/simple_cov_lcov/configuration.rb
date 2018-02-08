@@ -3,7 +3,6 @@ module SimpleCovLcov
     attr_writer :report_with_single_file
     attr_writer :output_directory
     attr_writer :lcov_file_name
-    attr_writer :single_report_path
 
     def report_with_single_file?
       !!@report_with_single_file
@@ -11,6 +10,11 @@ module SimpleCovLcov
 
     def output_directory
       @output_directory || File.join(SimpleCov.coverage_path, 'lcov')
+    end
+
+    def single_report_path=(new_path)
+      self.output_directory = File.dirname(new_path)
+      @single_report_path = new_path
     end
 
     def single_report_path

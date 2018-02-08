@@ -21,6 +21,16 @@ describe SimpleCovLcov::Configuration do
         expect(configuration.output_directory).to eq custom_directory_path
       end
     end
+
+    context 'when single_report_path is customized' do
+      before do
+        configuration.single_report_path = 'some/custom/path/lcov.info'
+      end
+
+      it 'sets correct path' do
+        expect(configuration.output_directory).to eq 'some/custom/path'
+      end
+    end
   end
 
   describe '#single_report_path' do
