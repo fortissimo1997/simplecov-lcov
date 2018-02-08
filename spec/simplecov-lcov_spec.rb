@@ -78,4 +78,11 @@ module SimpleCov::Formatter
       end
     end
   end
+
+  describe '.report_with_single_file=' do
+    it 'sets configuration options correctly' do
+      expect(LcovFormatter.config).to receive(:report_with_single_file=)
+      LcovFormatter.report_with_single_file = true
+    end
+  end
 end

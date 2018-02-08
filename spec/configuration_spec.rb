@@ -33,6 +33,20 @@ describe SimpleCovLcov::Configuration do
     end
   end
 
+  describe '#report_with_single_file?' do
+    context 'when no customisations are made' do
+      it { is_expected.not_to be_report_with_single_file }
+    end
+
+    context 'when report_with_single_file set to true' do
+      before do
+        configuration.report_with_single_file = true
+      end
+
+      it { is_expected.to be_report_with_single_file }
+    end
+  end
+
   describe '#single_report_path' do
     let(:default_single_report_dir) { File.join(SimpleCov.coverage_path, 'lcov') }
     let(:default_file_name) { 'simplecov-lcov.lcov' }
