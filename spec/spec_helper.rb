@@ -12,10 +12,10 @@ SimpleCov.configure do
   clean_filters
 end
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
-]
+])
 
 ENV['COVERAGE'] && SimpleCov.start do
   add_filter '/.rvm/'

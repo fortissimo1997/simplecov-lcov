@@ -31,6 +31,12 @@ module SimpleCov
         end
 
         def report_with_single_file=(value)
+          deprecation_message = \
+            "#{caller(1..1).first} " \
+            "`#{LcovFormatter}.report_with_single_file=` is deprecated. " \
+            "Use `#{LcovFormatter}.config.report_with_single_file=` instead"
+
+          warn deprecation_message
           config.report_with_single_file = value
         end
       end

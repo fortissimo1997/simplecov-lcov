@@ -80,9 +80,19 @@ module SimpleCov::Formatter
   end
 
   describe '.report_with_single_file=' do
+    before do
+      allow(LcovFormatter).to receive(:warn)
+      allow(LcovFormatter.config).to receive(:report_with_single_file=)
+    end
+
     it 'sets configuration options correctly' do
-      expect(LcovFormatter.config).to receive(:report_with_single_file=)
       LcovFormatter.report_with_single_file = true
+      expect(LcovFormatter.config).to have_received(:report_with_single_file=).with(true)
+    end
+
+    it 'shows deprecation warning' do
+      LcovFormatter.report_with_single_file = true
+      expect(LcovFormatter).to have_received(:warn).with(/LcovFormatter\.report_with_single_file=` is deprecated/)
     end
   end
 end
