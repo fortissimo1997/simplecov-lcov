@@ -12,10 +12,10 @@ SimpleCov.configure do
   clean_filters
 end
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
-]
+])
 
 ENV['COVERAGE'] && SimpleCov.start do
   add_filter '/.rvm/'
@@ -33,10 +33,10 @@ require 'simplecov-lcov'
 
 RSpec.configure do |config|
   config.before(:each) do
-    if Dir.exist?(SimpleCov::Formatter::LcovFormatter.output_directory)
+    if Dir.exist?(SimpleCov::Formatter::LcovFormatter.config.output_directory)
       FileUtils
         .remove_dir(
-                    SimpleCov::Formatter::LcovFormatter.output_directory,
+                    SimpleCov::Formatter::LcovFormatter.config.output_directory,
                     true
                    )
     end
