@@ -7,9 +7,7 @@ Custom SimpleCov formatter to generate a lcov style coverage.
 [![Gem Version](https://badge.fury.io/rb/simplecov-lcov.svg)](http://badge.fury.io/rb/simplecov-lcov)
 [![Inline docs](http://inch-ci.org/github/fortissimo1997/simplecov-lcov.svg?branch=master)](http://inch-ci.org/github/fortissimo1997/simplecov-lcov)
 [![Code Climate](https://codeclimate.com/github/fortissimo1997/simplecov-lcov.png)](https://codeclimate.com/github/fortissimo1997/simplecov-lcov)
-[![Dependency Status](https://gemnasium.com/fortissimo1997/simplecov-lcov.svg)](https://gemnasium.com/fortissimo1997/simplecov-lcov)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fortissimo1997/simplecov-lcov/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fortissimo1997/simplecov-lcov/?branch=master)
-[![simplecov-lcov API Documentation](https://www.omniref.com/ruby/gems/simplecov-lcov.png)](https://www.omniref.com/ruby/gems/simplecov-lcov)
 
 ## Usage
 
