@@ -48,27 +48,29 @@ module SimpleCov::Formatter
           it { expect(File.read(output_path)).to eq(fixture) }
         end
 
-        describe 'branch coverage enabled' do
-          let(:branch_coverage_enabled) { true }
+        if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.5")
+          describe 'branch coverage enabled' do
+            let(:branch_coverage_enabled) { true }
 
-          describe 'spec-fixtures-hoge.rb.branch.lcov' do
-            let(:output_path) {
-              File.join(LcovFormatter.config.output_directory, 'spec-fixtures-hoge.rb.lcov')
-            }
-            let(:fixture) {
-              File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-hoge.rb.branch.lcov")
-            }
-            it { expect(File.read(output_path)).to eq(fixture) }
-          end
+            describe 'spec-fixtures-hoge.rb.branch.lcov' do
+              let(:output_path) {
+                File.join(LcovFormatter.config.output_directory, 'spec-fixtures-hoge.rb.lcov')
+              }
+              let(:fixture) {
+                File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-hoge.rb.branch.lcov")
+              }
+              it { expect(File.read(output_path)).to eq(fixture) }
+            end
 
-          describe 'spec-fixtures-app-models-user.rb.branch.lcov' do
-            let(:output_path) {
-              File.join(LcovFormatter.config.output_directory, 'spec-fixtures-app-models-user.rb.lcov')
-            }
-            let(:fixture) {
-              File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.branch.lcov")
-            }
-            it { expect(File.read(output_path)).to eq(fixture) }
+            describe 'spec-fixtures-app-models-user.rb.branch.lcov' do
+              let(:output_path) {
+                File.join(LcovFormatter.config.output_directory, 'spec-fixtures-app-models-user.rb.lcov')
+              }
+              let(:fixture) {
+                File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.branch.lcov")
+              }
+              it { expect(File.read(output_path)).to eq(fixture) }
+            end
           end
         end
       end
