@@ -3,23 +3,20 @@ require 'active_support/core_ext/kernel/reporting'
 
 module SimpleCov::Formatter
   describe LcovFormatter do
+    let(:branch_coverage_enabled) { false }
+    before do
+      SimpleCov.clear_coverage_criteria
+      SimpleCov.enable_coverage :branch if branch_coverage_enabled
+      ENV['COVERAGE'] && SimpleCov.start do
+        add_filter '/.rvm/'
+      end
+
+      load 'fixtures/app/models/user.rb'
+      load 'fixtures/hoge.rb'
+    end
+
     describe '#format' do
-      let(:expand_path) {
-        lambda do |filename|
-          File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', filename))
-        end
-      }
-
-      let(:simplecov_result_hash) {
-        {
-        expand_path.call('hoge.rb') => [nil, nil, nil, 1, 2, 2, 1, nil, 0, 0, 0, 1],
-        expand_path.call('app/models/user.rb') => [nil, nil, nil, 2, 2, 2, 2, nil, 0, 0, 0, nil, 1, 0, 0, 1]
-        }
-      }
-
-      let(:simplecov_result) {
-        SimpleCov::Result.new(simplecov_result_hash)
-      }
+      let(:simplecov_result) { SimpleCov.result }
 
       context 'generating report per file' do
         before {
@@ -49,6 +46,30 @@ module SimpleCov::Formatter
             File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.lcov")
           }
           it { expect(File.read(output_path)).to eq(fixture) }
+        end
+
+        describe 'branch coverage enabled' do
+          let(:branch_coverage_enabled) { true }
+
+          describe 'spec-fixtures-hoge.rb.branch.lcov' do
+            let(:output_path) {
+              File.join(LcovFormatter.config.output_directory, 'spec-fixtures-hoge.rb.lcov')
+            }
+            let(:fixture) {
+              File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-hoge.rb.branch.lcov")
+            }
+            it { expect(File.read(output_path)).to eq(fixture) }
+          end
+
+          describe 'spec-fixtures-app-models-user.rb.branch.lcov' do
+            let(:output_path) {
+              File.join(LcovFormatter.config.output_directory, 'spec-fixtures-app-models-user.rb.lcov')
+            }
+            let(:fixture) {
+              File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.branch.lcov")
+            }
+            it { expect(File.read(output_path)).to eq(fixture) }
+          end
         end
       end
 
