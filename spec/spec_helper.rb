@@ -17,9 +17,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   Coveralls::SimpleCov::Formatter
 ])
 
-ENV['COVERAGE'] && SimpleCov.start do
-  add_filter '/.rvm/'
-end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 

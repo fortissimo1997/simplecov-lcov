@@ -83,7 +83,29 @@ module SimpleCov
 
       def format_file(file)
         filename = file.filename.gsub("#{SimpleCov.root}/", './')
-        "SF:#{filename}\n#{format_lines(file)}\nend_of_record\n"
+        pieces = []
+        pieces << "SF:#{filename}"
+        pieces << format_lines(file)
+
+        if SimpleCov.branch_coverage?
+          branch_data = format_branches(file)
+          pieces << branch_data if branch_data.length > 0
+          pieces << "BRF:#{file.total_branches.length}"
+          pieces << "BRH:#{file.covered_branches.length}"
+        end
+        pieces << "end_of_record"
+        pieces << ""
+        pieces.join("\n")
+      end
+
+      def format_branches(file)
+        branch_idx = 0
+        filtered_branches(file)
+          .map do |branch|
+            branch_idx += 1
+            format_branch(branch, branch_idx)
+          end
+          .join("\n")
       end
 
       def format_lines(file)
@@ -94,6 +116,15 @@ module SimpleCov
 
       def filtered_lines(file)
         file.lines.reject(&:never?).reject(&:skipped?)
+      end
+
+      def filtered_branches(file)
+        file.branches.reject(&:skipped?)
+      end
+
+      def format_branch(branch, branch_idx)
+        taken = branch.coverage == 0 ? '-' : branch.coverage
+        "BRDA:#{branch.report_line},0,#{branch_idx},#{taken}"
       end
 
       def format_line(line)

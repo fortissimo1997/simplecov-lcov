@@ -6,7 +6,7 @@
 
 Gem::Specification.new do |s|
   s.name = "simplecov-lcov".freeze
-  s.version = "0.7.0"
+  s.version = "0.8.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
@@ -37,6 +37,8 @@ Gem::Specification.new do |s|
     "spec/fixtures/hoge.rb",
     "spec/fixtures/lcov/spec-fixtures-app-models-user.rb.lcov",
     "spec/fixtures/lcov/spec-fixtures-hoge.rb.lcov",
+    "spec/fixtures/lcov/spec-fixtures-app-models-user.rb.branch.lcov",
+    "spec/fixtures/lcov/spec-fixtures-hoge.rb.branch.lcov",
     "spec/simplecov-lcov_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -53,7 +55,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rdoc>.freeze, [">= 0"])
       s.add_development_dependency(%q<bundler>.freeze, [">= 0"])
       s.add_development_dependency(%q<jeweler>.freeze, ["~> 2.3.0"])
-      s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
+      s.add_development_dependency(%q<simplecov>.freeze, [">= 0.18.0"])
       s.add_development_dependency(%q<coveralls>.freeze, [">= 0"])
       s.add_development_dependency(%q<activesupport>.freeze, [">= 0"])
     else
@@ -61,7 +63,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rdoc>.freeze, [">= 0"])
       s.add_dependency(%q<bundler>.freeze, [">= 0"])
       s.add_dependency(%q<jeweler>.freeze, ["~> 2.3.0"])
-      s.add_dependency(%q<simplecov>.freeze, [">= 0"])
+      s.add_dependency(%q<simplecov>.freeze, [">= 0.18.0"])
       s.add_dependency(%q<coveralls>.freeze, [">= 0"])
       s.add_dependency(%q<activesupport>.freeze, [">= 0"])
     end
@@ -70,7 +72,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rdoc>.freeze, [">= 0"])
     s.add_dependency(%q<bundler>.freeze, [">= 0"])
     s.add_dependency(%q<jeweler>.freeze, ["~> 2.3.0"])
-    s.add_dependency(%q<simplecov>.freeze, [">= 0"])
+    s.add_dependency(%q<simplecov>.freeze, [">= 0.18.0"])
     s.add_dependency(%q<coveralls>.freeze, [">= 0"])
     s.add_dependency(%q<activesupport>.freeze, [">= 0"])
   end

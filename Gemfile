@@ -10,7 +10,7 @@ group :development do
   gem 'rdoc'
   gem 'bundler'
   gem 'jeweler', '~> 2.3.0'
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.18'
   gem 'coveralls', require: false
   gem 'activesupport'
 end
