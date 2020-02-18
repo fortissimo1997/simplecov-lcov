@@ -8,8 +8,8 @@ source 'http://rubygems.org'
 group :development do
   gem 'rspec'
   gem 'rdoc'
+  gem 'rake'
   gem 'bundler'
-  gem 'jeweler', '~> 2.3.0'
   gem 'simplecov', '~> 0.18'
   gem 'coveralls', require: false
   gem 'activesupport'
