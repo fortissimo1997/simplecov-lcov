@@ -18,7 +18,7 @@ module SimpleCovLcov
     end
 
     def single_report_path
-      @single_report_path || File.join(output_directory, lcov_file_name)
+      @single_report_path ||= File.join(output_directory, lcov_file_name)
     end
 
     def lcov_file_name
