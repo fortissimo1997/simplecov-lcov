@@ -86,6 +86,8 @@ module SimpleCov
         pieces = []
         pieces << "SF:#{filename}"
         pieces << format_lines(file)
+        pieces << "LF:#{file.lines.filter { |el| el.coverage }.count}"
+        pieces << "LH:#{file.lines.filter { |el| el.coverage && el.coverage > 0}.count}"
 
         if SimpleCov.branch_coverage?
           branch_data = format_branches(file)
