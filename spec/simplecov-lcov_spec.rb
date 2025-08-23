@@ -13,6 +13,7 @@ module SimpleCov::Formatter
 
       load 'fixtures/app/models/user.rb'
       load 'fixtures/hoge.rb'
+      load 'fixtures/blank.rb'
     end
 
     describe '#format' do
@@ -48,6 +49,16 @@ module SimpleCov::Formatter
           it { expect(File.read(output_path)).to eq(fixture) }
         end
 
+        describe 'spec-fixtures-blank.rb.lcov' do
+          let(:output_path) {
+            File.join(LcovFormatter.config.output_directory, 'spec-fixtures-blank.rb.lcov')
+          }
+          let(:fixture) {
+            File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-blank.rb.lcov")
+          }
+          it { expect(File.read(output_path)).to eq(fixture) }
+        end
+
         describe 'branch coverage enabled' do
           let(:branch_coverage_enabled) { true }
 
@@ -67,6 +78,16 @@ module SimpleCov::Formatter
             }
             let(:fixture) {
               File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.branch.lcov")
+            }
+            it { expect(File.read(output_path)).to eq(fixture) }
+          end
+
+          describe 'spec-fixtures-blank.rb.branch.lcov' do
+            let(:output_path) {
+              File.join(LcovFormatter.config.output_directory, 'spec-fixtures-blank.rb.lcov')
+            }
+            let(:fixture) {
+              File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-blank.rb.branch.lcov")
             }
             it { expect(File.read(output_path)).to eq(fixture) }
           end
@@ -97,6 +118,16 @@ module SimpleCov::Formatter
             }
             it { expect(File.read(output_path)).to eq(fixture) }
           end
+
+          describe 'spec-fixtures-blank.rb.lcov' do
+            let(:output_path) {
+              File.join(LcovFormatter.config.output_directory, 'spec-fixtures-blank.rb.lcov')
+            }
+            let(:fixture) {
+              File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-blank.rb.lcov")
+            }
+            it { expect(File.read(output_path)).to eq(fixture) }
+          end
         end
       end
 
@@ -120,8 +151,12 @@ module SimpleCov::Formatter
           let(:fixture_of_user) {
             File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-app-models-user.rb.lcov")
           }
+          let(:fixture_of_blank) {
+            File.read("#{File.dirname(__FILE__)}/fixtures/lcov/spec-fixtures-blank.rb.lcov")
+          }
           it { expect(File.read(output_path)).to match(fixture_of_hoge) }
           it { expect(File.read(output_path)).to match(fixture_of_user) }
+          it { expect(File.read(output_path)).to match(fixture_of_blank) }
         end
       end
     end
