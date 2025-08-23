@@ -87,8 +87,10 @@ module SimpleCov
         pieces << "SF:#{filename}"
         lines = format_lines(file)
         pieces << lines if lines.length > 0
+        pieces << "LF:#{file.lines.count(&:coverage)}"
+        pieces << "LH:#{file.lines.count(&:covered?)}"
 
-        if SimpleCov.branch_coverage?
+        if SimpleCov.respond_to?(:branch_coverage?) && SimpleCov.branch_coverage?
           branch_data = format_branches(file)
           pieces << branch_data if branch_data.length > 0
           pieces << "BRF:#{file.total_branches.length}"
