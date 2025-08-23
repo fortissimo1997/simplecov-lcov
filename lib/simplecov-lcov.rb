@@ -85,7 +85,8 @@ module SimpleCov
         filename = file.filename.gsub("#{SimpleCov.root}/", './')
         pieces = []
         pieces << "SF:#{filename}"
-        pieces << format_lines(file)
+        lines = format_lines(file)
+        pieces << lines if lines.length > 0
         pieces << "LF:#{file.lines.count(&:coverage)}"
         pieces << "LH:#{file.lines.count(&:covered?)}"
 
