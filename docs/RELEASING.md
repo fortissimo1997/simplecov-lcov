@@ -8,7 +8,7 @@ This repository uses:
 
 ## Normal flow
 
-1. Merge changes to `main` using Conventional Commits.
+1. Merge changes to `master` using Conventional Commits.
 2. `release-please` creates a **Release PR** (bumps `lib/simplecov/lcov/version.rb` and updates `CHANGELOG.md`).
 3. Merge the Release PR → a GitHub Release and tag `vX.Y.Z` are created.
 4. The **Publish** workflow runs on `release: published` and pushes the gem to RubyGems.
@@ -24,5 +24,5 @@ This repository uses:
 
 - **Single source of truth (SSOT)** for version is `SimpleCov::Lcov::VERSION` in `lib/simplecov/lcov/version.rb`.
 - Do **not** manually edit `CHANGELOG.md`; it's auto-generated.
-- Protect `main` branch and require CI checks to pass before merge.
+- Protect `master` branch and require CI checks to pass before merge.
 - If you ever need a manual release, you can trigger `release-please` via `workflow_dispatch`.
