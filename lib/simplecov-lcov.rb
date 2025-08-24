@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'pathname'
+require_relative 'simplecov/lcov/version'
 require_relative 'simple_cov_lcov/configuration'
 
 fail 'simplecov-lcov requires simplecov' unless defined?(SimpleCov)
