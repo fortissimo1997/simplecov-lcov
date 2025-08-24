@@ -29,13 +29,13 @@ require 'simplecov-lcov'
 # Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-  config.before(:each) do
-    if Dir.exist?(SimpleCov::Formatter::LcovFormatter.config.output_directory)
-      FileUtils
-        .remove_dir(
-                    SimpleCov::Formatter::LcovFormatter.config.output_directory,
-                    true
-                   )
-    end
-  end
+  # config.before(:each) do
+  #   if Dir.exist?(SimpleCov::Formatter::LcovFormatter.config.output_directory)
+  #     FileUtils
+  #       .remove_dir(
+  #                   SimpleCov::Formatter::LcovFormatter.config.output_directory,
+  #                   true
+  #                  )
+  #   end
+  # end
 end
