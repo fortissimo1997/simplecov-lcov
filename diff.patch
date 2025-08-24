@@ -1,0 +1,40 @@
+diff --git a/.github/workflows/release.yml b/.github/workflows/release.yml
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/.github/workflows/release.yml
+@@ -0,0 +1,49 @@
++name: Publish gem on GitHub Release
++on:
++  release:
++    types: [published]
++
++jobs:
++  publish:
++    # RubyGems 側の Trusted Publisher で登録した Environment 名と一致させる
++    environment: GitHubActions
++    runs-on: ubuntu-latest
++    permissions:
++      contents: write
++      id-token: write   # ← Trusted Publishing（OIDC）に必須
++
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          # 念のため完全取得（CHANGELOG等で過去ログを参照するツールの保険）
++          fetch-depth: 0
++
++      - uses: ruby/setup-ruby@v1
++        with:
++          ruby-version: '3.3'
++
++      # （任意）ビルドが壊れていないことだけ軽く確認
++      - name: Build gem (sanity check)
++        run: |
++          gem build simplecov-lcov.gemspec
++          ls -1 *.gem
++
++      # RubyGems 公式 Action（APIキー不要／Trusted Publishing）
++      - name: Push to RubyGems.org
++        uses: rubygems/release-gem@v1
++        # この Action は直前に生成された *.gem を自動検出して push します
