@@ -1,7 +1,6 @@
 name: Publish gem on GitHub Release
 on:
   release:
-    types: [published]
 
 jobs:
   publish:
