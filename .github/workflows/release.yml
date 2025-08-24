@@ -1,0 +1,28 @@
+name: Publish gem on GitHub Release
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Build gem (sanity check)
+        run: |
+          gem build simplecov-lcov.gemspec
+          ls -1 *.gem
+
+      - name: Push to RubyGems.org
+        uses: rubygems/release-gem@v1

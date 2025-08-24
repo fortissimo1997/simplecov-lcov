@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "ruby",
+  "packages": {
+    ".": {
+      "package-name": "simplecov-lcov",
+      "version-file": "lib/simplecov/lcov/version.rb",
+      "changelog-path": "CHANGELOG.md"
+    }
+  },
+  "plugins": [
+    "sentence-case"
+  ]
+}
