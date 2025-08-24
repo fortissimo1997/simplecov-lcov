@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "lib/simplecov/lcov/version"
+
 Gem::Specification.new do |s|
   s.name = "simplecov-lcov".freeze
   s.version = SimpleCov::Lcov::VERSION
@@ -19,7 +21,6 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     ".tachikoma.yml",
-    ".travis.yml",
     "Gemfile",
     "LICENSE.txt",
     "README.markdown",
